@@ -1012,7 +1012,7 @@ public class Assert {
                     // doesn't say "expected: java.lang.String<my.package.MyException> ..."
                     expected += "@" + Integer.toHexString(System.identityHashCode(expectedThrowable));
                     actual += "@" + Integer.toHexString(System.identityHashCode(actualThrowable));
-                }
+                }   
                 String mismatchMessage = buildPrefix(message)
                         + format("unexpected exception type thrown;", expected, actual);
 
