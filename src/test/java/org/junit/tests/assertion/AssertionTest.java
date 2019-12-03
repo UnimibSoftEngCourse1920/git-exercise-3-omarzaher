@@ -1058,5 +1058,21 @@ public class AssertionTest {
             }
         };
         assertGreaterThan('c', 'b', comparatorCharacter);
+
+        Comparator<Object> comparatorTest = new Comparator<Object>() {
+            public int compare(Object o1, Object o2){  
+                Integer n1 = (Integer) o1;
+                Integer n2 = (Integer) o2;
+                if(n1 == n2) {
+                    return 0;  
+                } else if(n1 > n2) {
+                    return 1;  
+                } else {  
+                    return -1;    
+                }
+            }
+        };
+        assertGreaterThan(2, 1, comparatorTest);
+
     }
 }

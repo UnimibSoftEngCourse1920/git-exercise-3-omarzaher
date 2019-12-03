@@ -1012,7 +1012,7 @@ public class Assert {
                     // doesn't say "expected: java.lang.String<my.package.MyException> ..."
                     expected += "@" + Integer.toHexString(System.identityHashCode(expectedThrowable));
                     actual += "@" + Integer.toHexString(System.identityHashCode(actualThrowable));
-                }
+                }   
                 String mismatchMessage = buildPrefix(message)
                         + format("unexpected exception type thrown;", expected, actual);
 
@@ -1030,6 +1030,10 @@ public class Assert {
 
     private static String buildPrefix(String message) {
         return message != null && message.length() != 0 ? message + ": " : "";
+    }
+    
+    public static <T> void assertGreaterThan(T o1, T o2, java.util.Comparator<T> comparator) {
+        assertTrue(comparator.compare(o1, o2) > 0);
     }
     
     public static void assertGreaterThan(int o1, int o2, java.util.Comparator<Integer> comparator) {
