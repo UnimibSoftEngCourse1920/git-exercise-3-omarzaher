@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertGreaterThan;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
@@ -16,6 +17,7 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Comparator;
 
 import org.junit.Assert;
 import org.junit.ComparisonFailure;
@@ -1001,5 +1003,23 @@ public class AssertionTest {
                 throw t;
             }
         };
+    }
+    
+    @Test
+    public void greaterThan() {
+        Comparator comparatorTest = new Comparator() {
+            public int compare(Object o1, Object o2){  
+                Integer n1 = (Integer) o1;
+                Integer n2 = (Integer) o2;
+                if(n1 == n2) {
+                    return 0;  
+                } else if(n1 > n2) {
+                    return 1;  
+                } else {  
+                    return -1;    
+                }
+            }
+        };
+        assertGreaterThan(2, 1, comparatorTest);
     }
 }
